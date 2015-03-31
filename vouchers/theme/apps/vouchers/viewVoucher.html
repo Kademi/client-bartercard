@@ -9,12 +9,20 @@
             <div class="alert alert-info">
                 <h3 style="margin-top: 10px">
                     This voucher was redeemed <abbr title="$formatter.formatDateISO8601($page.statusDate)" class="timeago">$page.statusDate</abbr>
-                    by $page.changedBy.name
+                    by <b>$page.changedBy.name</b> for <b>$!page.statusChangedForOrg.title</b>
                 </h3>
             </div>
-            <hr/>            
+            <hr/>
+            #elseif( $page.pending )
+            <div class="alert alert-info">
+                <h3 style="margin-top: 10px">
+                    This voucher was booked <abbr title="$formatter.formatDateISO8601($page.statusDate)" class="timeago">$page.statusDate</abbr>
+                    by <b>$page.changedBy.name</b> for <b>$!page.statusChangedForOrg.title</b>
+                </h3>
+            </div>
+            <hr/>
             #end
-                       
+
 
 
 
@@ -28,14 +36,14 @@
                         <th>Status</th>
                         <td>
                             #if( $page.status == "A" )
-                            <span class="label label-success">Available</span>                                    
+                            <span class="label label-success">Available</span>
                             #elseif( $page.status == "P" )
                             <span class="label label-warning">Booked</span>
                             #elseif( $page.status == "R" )
-                            <span class="label label-danger">Redeemed</span>                                    
+                            <span class="label label-danger">Redeemed</span>
                             #else
                             unknown $page.status
-                            #end                            
+                            #end
                         </td>
                     </tr>
                     <tr>
@@ -46,7 +54,7 @@
             </div>
 
             <hr/>
-            
+
 
             <h3>History</h3>
 
@@ -63,15 +71,15 @@
                 <tr>
                     <td>
                             #if( $c.status == "A" )
-                            <span class="label label-success">Available</span>                                    
+                            <span class="label label-success">Available</span>
                             #elseif( $c.status == "P" )
                             <span class="label label-warning">Booked</span>
                             #elseif( $c.status == "R" )
-                            <span class="label label-danger">Redeemed</span>                                    
+                            <span class="label label-danger">Redeemed</span>
                             #else
                             unknown $c.status
-                            #end                            
-                        
+                            #end
+
                     </td>
                     <td><abbr title="$formatter.formatDateISO8601($c.changeDate)" class="timeago">$c.changeDate</abbr></td>
                     <td><a href="$c.changeBy.href">$c.changeBy.name</a></td>
@@ -118,4 +126,3 @@
         </script>
     </body>
 </html>
-            
