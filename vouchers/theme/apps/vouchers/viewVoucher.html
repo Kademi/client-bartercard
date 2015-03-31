@@ -81,6 +81,31 @@
             </table>
         </div>
 
+        <hr/>
+
+        <div>
+            <h3>Voucher Changes</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Guest name</th>
+                    <th>In</th>
+                    <th>Out</th>
+                    <th>Reservation</th>
+                    <th>Invoice no.</th>
+                    <th>Timestamp</th>
+                </tr>
+                #foreach($c in $page.extraFieldHistory)
+                <tr>
+                        <td>$!c.guestName</td>
+                        <td>$!c.checkInDate</td>
+                        <td>$!c.checkOutDate</td>
+                        <td>$!c.reservationNo</td>
+                        <td>$!c.invoiceNo</td>
+                        <td>$!c.createdDate</td>
+                </tr>
+                #end
+            </table>
+        </div>
 
 
 
